@@ -1,0 +1,138 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "functions": {
+    "api/flux/edit.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/flux/krea.js": {
+      "memory": 1024,
+      "maxDuration": 120
+    },
+    "api/ideogram/generate.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/imagen4/generate.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/hunyuan3d/generate.js": {
+      "memory": 1024,
+      "maxDuration": 240
+    },
+    "api/runway/image-to-video.js": {
+      "memory": 1024,
+      "maxDuration": 300
+    },
+    "api/veo3/image-to-video.js": {
+      "memory": 1024,
+      "maxDuration": 120
+    },
+    "api/fal/video-understanding.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/luma/video-generation.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/luma/text-to-video.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/pika/text-to-video.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/cloudinary-upload.js": {
+      "memory": 512,
+      "maxDuration": 30
+    },
+    "api/download-image.js": {
+      "memory": 512,
+      "maxDuration": 30
+    },
+    "api/gpt/text-to-image.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/gpt/edit-image.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/gemini/flash-edit.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/flux/generate.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/flux/lora.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/luma/generate.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/luma/photon.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/recraft/generate.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/easel/generate.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/bria/generate.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/kling/text-to-video.js": {
+      "memory": 1024,
+      "maxDuration": 90
+    },
+    "api/luma/photon-flash.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/recraft/upscale.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/video/prompt-optimizer.js": {
+      "memory": 512,
+      "maxDuration": 30
+    },
+    "api/fal/moondream.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept, Authorization"
+      },
+      "dest": "/api/$1.js"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+} 
