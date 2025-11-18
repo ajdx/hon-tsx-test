@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 1280 1322" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="BG" clip-path="url(#clip0_94_170)">
+<rect width="1280" height="1322" fill="white"/>
+<path id="BG-shape" d="M-397 626.955C-397 19.3879 -397 -72 -397 -72L1676.38 -71.8242C1676.38 -71.8242 1676.38 322.732 1676.38 690.224C1676.38 1057.72 1456.98 1225.53 1076.7 1225.53C984.069 1225.53 938.417 1215.44 892.322 1204.55L531.542 1134.36V1322L249.212 1267.14C-189.13 1182.83 -396.556 983.555 -396.556 626.551L-397 626.955Z" fill="var(--fill-0, #F2F3F5)"/>
+</g>
+<defs>
+<clipPath id="clip0_94_170">
+<rect width="1280" height="1322" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -1,0 +1,73 @@
+diff --git a/src/components/LandingPage.tsx b/src/components/LandingPage.tsx
+index b4abd2f5d414aca0f182a0985875f2846014ae34..ca4ea3fbe2de566324f4ebe163dce7c623e47ada 100755
+--- a/src/components/LandingPage.tsx
++++ b/src/components/LandingPage.tsx
+@@ -2,56 +2,62 @@ import React, { useState, useEffect, useRef } from 'react';
+ import { ArrowRight, ChevronLeft, ChevronRight, Phone, Volume2, VolumeX } from 'lucide-react';
+ import { useNavigate, Link } from 'react-router-dom';
+ import { AnimatePresence } from 'framer-motion';
+ import { LandingPageHonAssistant } from './common/LandingPageHonAssistant';
+ import { LandingPageHonIndicator } from './common/LandingPageHonIndicator';
+ 
+ // Import actual model logos from assets
+ import veo3Logo from '../assets/veo3modelcion.png';
+ import fluxLogo from '../assets/fluxmodelcion.png';
+ import imagen4Logo from '../assets/image1modelcion.png';
+ import ray2Logo from '../assets/ray2modelcion.png';
+ import humeLogo from '../assets/humeoctavemodelcion.png';
+ import ideogramLogo from '../assets/ideogrammodelcion.png';
+ import runwayLogo from '../assets/runwaycion.png';
+ import elevenlabsLogo from '../assets/elevenlabscion.png';
+ import hunyuanLogo from '../assets/huanyuancion.png';
+ import pikaLogo from '../assets/pikacion.png';
+ import klingLogo from '../assets/klingcion.png';
+ import recraftLogo from '../assets/recraftcion.png';
+ import briaLogo from '../assets/briacion.jpg';
+ import seedanceLogo from '../assets/seedancecion.png';
+ import honLogo from '../assets/hon-logo.svg';
+ 
+ // Hero background videos for carousel
+ const heroVideos = [
+-  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1752858898/FqPKj1KI5HV4FNcHtvMJU_output_p8t1ol.mp4",
+-  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1752859660/5tt6T4GAbZH4ewMqLrABk_output_oncjxj.mp4",
+-  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1752858526/K91IQ7VbNji2R2_Zr-GtJ_output_rgp2df.mp4",
+-  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1752860632/A9RxUxVBwM0WgfNIQw18m_output_mtzi9s.mp4",
+-  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1755392822/hon-comics/hon-remote-1755392822469.mp4",
+-  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1755391565/hon-comics/hon-remote-1755391565265.mp4"
++  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1759090410/hon-comics/hon-remote-1759090408864.mp4",
++  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1759090158/hon-comics/hon-remote-1759090157461.mp4",
++  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1759088651/hon-comics/hon-remote-1759088651119.mp4",
++  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1759089540/hon-comics/hon-remote-1759089539697.mp4",
++  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1759087951/hon-comics/hon-remote-1759087950321.mp4",
++  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1759087618/hon-comics/hon-remote-1759087617340.mp4",
++  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1759087172/hon-comics/hon-remote-1759087171806.mp4",
++  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1759086745/hon-comics/hon-remote-1759086743717.mp4",
++  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1759085367/hon-comics/hon-remote-1759085366560.mp4",
++  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1759084314/hon-comics/hon-remote-1759084313559.mp4",
++  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1758899262/hon-comics/hon-remote-1758899260652.mp4",
++  "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1758807943/hon-remote-1758565550938_avp1ma.mp4"
+ ];
+ 
+ // Collaboration section videos for "Speak your Ideas into existence"
+ const collaborationVideos = [
+   "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1753181035/g4NUTn6wAXeL0WvTJRxvc_output_xoq0dx.mp4",
+   "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1737821135/kken7aq3fm9sa8fslphu.mp4",
+   "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1737725343/q4xw2bcf9iicvjapdwog.mp4",
+   "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1737722943/byalgw4qijochkmc8enk.mp4",
+   "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1755382468/hon-comics/hon-remote-1755382467873.mp4",
+   "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1755382731/hon-comics/hon-remote-1755382731841.mp4",
+   "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1754755450/hon-comics/hon-remote-1754755450593.mp4",
+   "https://res.cloudinary.com/dz2kyqfj9/video/upload/v1742178844/uknkfhy52rifcjmihxzk.mp4"
+ ];
+ 
+ // Hon demo videos: handled directly on the <video> elements below (two clips only)
+ 
+ // AI Model data with actual logo files
+ const aiModels = [
+   { name: 'Veo 3', logo: veo3Logo },
+   { name: 'Flux', logo: fluxLogo },
+   { name: 'Image-1', logo: imagen4Logo },
+   { name: 'Ray 2', logo: ray2Logo },
+   { name: 'Hume Octave', logo: humeLogo },
+   { name: 'Ideogram', logo: ideogramLogo },
+   { name: 'Runway', logo: runwayLogo },
