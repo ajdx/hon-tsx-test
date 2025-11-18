@@ -1,0 +1,112 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "functions": {
+    "api/luma/generate.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "api/flux/generate.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "api/elevenlabs/voices.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "api/elevenlabs/tts.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "api/ideogram/generate.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "api/recraft/generate.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "api/easel/generate.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "api/kling/generate.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "api/bria/generate.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/luma/generate",
+      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      "dest": "/api/luma/generate.js",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Authorization"
+      }
+    },
+    {
+      "src": "/api/flux/generate",
+      "methods": ["GET", "POST", "OPTIONS"],
+      "dest": "/api/flux/generate.js"
+    },
+    {
+      "src": "/api/elevenlabs/voices",
+      "methods": ["GET", "OPTIONS"],
+      "dest": "/api/elevenlabs/voices.js"
+    },
+    {
+      "src": "/api/elevenlabs/tts",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/elevenlabs/tts.js"
+    },
+    {
+      "src": "/api/ideogram/generate",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/ideogram/generate.js"
+    },
+    {
+      "src": "/api/recraft/generate",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/recraft/generate.js"
+    },
+    {
+      "src": "/api/easel/generate",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/easel/generate.js"
+    },
+    {
+      "src": "/api/kling/generate",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/kling/generate.js"
+    },
+    {
+      "src": "/api/bria/generate",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/bria/generate.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept, Authorization"
+      },
+      "dest": "/api/$1.js"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+} 
